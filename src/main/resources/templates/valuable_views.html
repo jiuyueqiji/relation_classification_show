@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<div id="btn-group0" class="btn-group btn-group-toggle" data-toggle="buttons">
+<label class="btn btn-secondary" name="option2">
+  <input type="radio" name="options0" value="option2" autocomplete="off"> <i class="em em-grinning"></i>
+</label>
+<label class="btn btn-secondary" name="option3">
+  <input type="radio" name="options0" value="option3" autocomplete="off"> <i class="em em-angry"></i>
+</label>
+<label class="btn btn-secondary" name="option4">
+  <input type="radio" name="options0" value="option4" autocomplete="off"> <i class="em em-sob"></i>
+</label>
+<label class="btn btn-secondary" name="option5">
+  <input type="radio" name="options0" value="option5" autocomplete="off"> <i class="em em-fearful"></i>
+</label>
+<label class="btn btn-secondary" name="option6">
+  <input type="radio" name="options0" value="option6" autocomplete="off"> <i class="em em-face_vomiting"></i>
+</label>
+<label class="btn btn-secondary" name="option7">
+  <input type="radio" name="options0" value="option7" autocomplete="off"> <i class="em em-open_mouth"></i>
+</label>
+</div>-->
+<!--<label>您觉得以下哪组词与这首诗更贴合？</label>
+<div id="btn-group4" class="btn-group-vertical btn-group-toggle" data-toggle="buttons">
+  <label class="btn btn-secondary" name="topic1">
+    <input type="radio" name="topics0" value="topic1" autocomplete="off">
+    <th:block th:each="item,iterState:${poems[0].topicWords}">
+      <th:block th:if="${iterState.index < 6}">
+        <span th:text="${item}"></span>
+      </th:block>
+    </th:block>
+  </label>
+  <label class="btn btn-secondary" name="topic2">
+    <input type="radio" name="topics0" value="topic2" autocomplete="off">
+    <th:block th:each="item,iterState:${poems[0].selectedTopicWords}">
+      <th:block th:if="${iterState.index < 6}">
+        <span th:text="${item}"></span>
+      </th:block>
+    </th:block>
+  </label>
+</div>-->
+
+<!--<div id="btn-group1" class="btn-group btn-group-toggle" data-toggle="buttons">
+<label class="btn btn-secondary" name="option2">
+  <input type="radio" name="options1" value="option2" autocomplete="off"> <i class="em em-grinning"></i>
+</label>
+<label class="btn btn-secondary" name="option3">
+  <input type="radio" name="options1" value="option3" autocomplete="off"> <i class="em em-angry"></i>
+</label>
+<label class="btn btn-secondary" name="option4">
+  <input type="radio" name="options1" value="option4" autocomplete="off"> <i class="em em-sob"></i>
+</label>
+<label class="btn btn-secondary" name="option5">
+  <input type="radio" name="options1" value="option5" autocomplete="off"> <i class="em em-fearful"></i>
+</label>
+<label class="btn btn-secondary" name="option6">
+  <input type="radio" name="options1" value="option6" autocomplete="off"> <i class="em em-face_vomiting"></i>
+</label>
+<label class="btn btn-secondary" name="option7">
+  <input type="radio" name="options1" value="option7" autocomplete="off"> <i class="em em-open_mouth"></i>
+</label>
+</div>-->
+<!--<div id="btn-group5" class="btn-group-vertical btn-group-toggle" data-toggle="buttons">
+  <label class="btn btn-secondary" name="topic1">
+    <input type="radio" name="topics1" value="topic1" autocomplete="off">
+    <th:block th:each="item,iterState:${poems[1].topicWords}">
+      <th:block th:if="${iterState.index < 6}">
+        <span th:text="${item}"></span>
+      </th:block>
+    </th:block>
+  </label>
+  <label class="btn btn-secondary" name="topic2">
+    <input type="radio" name="topics1" value="topic2" autocomplete="off">
+    <th:block th:each="item,iterState:${poems[1].selectedTopicWords}">
+      <th:block th:if="${iterState.index < 6}">
+        <span th:text="${item}"></span>
+      </th:block>
+    </th:block>
+  </label>
+</div>-->
+
+<!--<div id="btn-group2" class="btn-group btn-group-toggle" data-toggle="buttons">
+<label class="btn btn-secondary" name="option2">
+  <input type="radio" name="options2" value="option2" autocomplete="off"> <i class="em em-grinning"></i>
+</label>
+<label class="btn btn-secondary" name="option3">
+  <input type="radio" name="options2" value="option3" autocomplete="off"> <i class="em em-angry"></i>
+</label>
+<label class="btn btn-secondary" name="option4">
+  <input type="radio" name="options2" value="option4" autocomplete="off"> <i class="em em-sob"></i>
+</label>
+<label class="btn btn-secondary" name="option5">
+  <input type="radio" name="options2" value="option5" autocomplete="off"> <i class="em em-fearful"></i>
+</label>
+<label class="btn btn-secondary" name="option6">
+  <input type="radio" name="options2" value="option6" autocomplete="off"> <i class="em em-face_vomiting"></i>
+</label>
+<label class="btn btn-secondary" name="option7">
+  <input type="radio" name="options2" value="option7" autocomplete="off"> <i class="em em-open_mouth"></i>
+</label>
+</div>-->
+
+<!--<label>您觉得以下哪组词与这首诗更贴合？</label>
+<div id="btn-group6" class="btn-group-vertical btn-group-toggle" data-toggle="buttons">
+  <label class="btn btn-secondary" name="topic1">
+    <input type="radio" name="topics2" value="topic1" autocomplete="off">
+    <th:block th:each="item,iterState:${poems[2].topicWords}">
+      <th:block th:if="${iterState.index < 6}">
+        <span th:text="${item}"></span>
+      </th:block>
+    </th:block>
+  </label>
+  <label class="btn btn-secondary" name="topic2">
+    <input type="radio" name="topics2" value="topic2" autocomplete="off">
+    <th:block th:each="item,iterState:${poems[2].selectedTopicWords}">
+      <th:block th:if="${iterState.index < 6}">
+        <span th:text="${item}"></span>
+      </th:block>
+    </th:block>
+  </label>
+</div>-->
+</body>
+</html>

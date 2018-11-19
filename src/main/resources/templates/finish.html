@@ -1,0 +1,170 @@
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Thanks!</title>
+    <script src="js/echarts.js"></script>
+</head>
+<body>
+<div id="results" style="width:50%;height:450px;float: left"></div>
+<img src="img/thank.png" align="middle" style="width: 50%">
+<script th:inline="javascript">
+    var myChart = echarts.init(document.getElementById("results"));
+    myChart.title = '截至目前的结果统计';
+    var posList = [
+        'left', 'right', 'top', 'bottom',
+        'inside',
+        'insideTop', 'insideLeft', 'insideRight', 'insideBottom',
+        'insideTopLeft', 'insideTopRight', 'insideBottomLeft', 'insideBottomRight'
+    ];
+
+    myChart.configParameters = {
+        rotate: {
+            min: -90,
+            max: 90
+        },
+        align: {
+            options: {
+                left: 'left',
+                center: 'center',
+                right: 'right'
+            }
+        },
+        verticalAlign: {
+            options: {
+                top: 'top',
+                middle: 'middle',
+                bottom: 'bottom'
+            }
+        },
+        position: {
+            options: echarts.util.reduce(posList, function (map, pos) {
+                map[pos] = pos;
+                return map;
+            }, {})
+        },
+        distance: {
+            min: 0,
+            max: 100
+        }
+    };
+
+    myChart.config = {
+        rotate: 90,
+        align: 'left',
+        verticalAlign: 'middle',
+        position: 'insideBottom',
+        distance: 15,
+        onChange: function () {
+            var labelOption = {
+                normal: {
+                    rotate: myChart.config.rotate,
+                    align: myChart.config.align,
+                    verticalAlign: myChart.config.verticalAlign,
+                    position: myChart.config.position,
+                    distance: myChart.config.distance
+                }
+            };
+            myChart.setOption({
+                series: [{
+                    label: labelOption
+                }, {
+                    label: labelOption
+                }, {
+                    label: labelOption
+                }, {
+                    label: labelOption
+                }]
+            });
+        }
+    };
+
+
+    var labelOption = {
+        normal: {
+            show: true,
+            position: myChart.config.position,
+            distance: myChart.config.distance,
+            align: myChart.config.align,
+            verticalAlign: myChart.config.verticalAlign,
+            rotate: myChart.config.rotate,
+            formatter: '{c}  {name|{a}}',
+            fontSize: 16,
+            rich: {
+                name: {
+                    textBorderColor: '#fff'
+                }
+            }
+        }
+    };
+
+    option = {
+        title: {
+            text: "截至目前的结果统计"
+        },
+        color: ['#003366', '#006699', '#4cabce', '#e5323e'],
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'shadow'
+            }
+        },
+        legend: {
+            data: ['baseline', '+emotion', '+topic', '+both']
+        },
+        toolbox: {
+            show: true,
+            orient: 'vertical',
+            left: 'right',
+            top: 'center',
+            feature: {
+                mark: {show: true},
+                dataView: {show: true, readOnly: false},
+                magicType: {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+                restore: {show: true},
+                saveAsImage: {show: true}
+            }
+        },
+        calculable: true,
+        xAxis: [
+            {
+                type: 'category',
+                axisTick: {show: false},
+                data: ['Fluency', 'Coherence', 'Emotion', 'Topic', 'Poeticness']
+            }
+        ],
+        yAxis: [
+            {
+                type: 'value'
+            }
+        ],
+        series: [
+            {
+                name: 'baseline',
+                type: 'bar',
+                barGap: 0,
+                label: labelOption,
+                data: [[${baseline}]]
+            },
+            {
+                name: '+emotion',
+                type: 'bar',
+                label: labelOption,
+                data: [[${emotion}]]
+            },
+            {
+                name: '+topic',
+                type: 'bar',
+                label: labelOption,
+                data: [[${topic}]]
+            },
+            {
+                name: '+both',
+                type: 'bar',
+                label: labelOption,
+                data: [[${both}]]
+            }
+        ]
+    };
+    myChart.setOption(option);
+</script>
+</body>
+</html>

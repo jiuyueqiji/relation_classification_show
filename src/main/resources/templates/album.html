@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)https://getbootstrap.com/docs/4.1/examples/album/ -->
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:mailto="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!--<link rel="icon" href="https://getbootstrap.com/favicon.ico">-->
+
+    <title>Poems</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/album.css" rel="stylesheet">
+    <link href="css/bootstrap-slider.css" rel="stylesheet">
+    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <style>
+      li {list-style-type:none;font-size:18px}
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.btn-group').on('click', 'label.btn', function(e) {
+                if ($(this).hasClass('active')) {
+                    setTimeout(function() {
+                        $(this).removeClass('active').find('input').prop('checked', false);
+                    }.bind(this), 10);
+                }
+                else {
+                    $(this).find('input').prop('checked', true);
+                }
+            });
+            $('.btn-group-vertical').on('click', 'label.btn', function(e) {
+                if ($(this).hasClass('active')) {
+                    setTimeout(function() {
+                        $(this).removeClass('active').find('input').prop('checked', false);
+                    }.bind(this), 10);
+                }
+                else {
+                    $(this).find('input').prop('checked', true);
+                }
+            });
+        });
+    </script>
+  </head>
+
+  <body>
+
+    <main role="main">
+
+      <div class="container">
+        <h2 class="jumbotron-heading">诗歌生成人工评测</h2>
+      </div>
+      <div class="album py-5 bg-light">
+        <div class="container">
+          <div class="progress" style="margin-top: 10px;margin-bottom: 10px">
+            <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                 aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+            </div>
+          </div>
+          <form id="info-form" action="/signin" method="post">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="card mb-lg-4 shadow-sm">
+                <div class="card-body">
+                  <th:block th:object="${poems[0]}">
+                    <li th:each="item : *{lines}" th:text="${item}"></li>
+                  </th:block>
+                  <br/>
+
+                  <label>给这首诗的流利度打个分吧！</label>
+                  <input id="ex0" name="ex0" type="text" data-slider-min="0" data-slider-max="5" data-slider-step="1"/>
+
+                  <label>您觉得这首诗上下句衔接得如何？</label>
+                  <input id="ex3" name="ex3" type="text" data-slider-min="0" data-slider-max="5" data-slider-step="1"/>
+
+                  <label>您觉得这首诗带有感情吗？</label>
+                  <input id="ex9" name="ex9" type="text" data-slider-min="0" data-slider-max="5" data-slider-step="1"/>
+
+                  <label>您觉得这首诗是否隐含了一定的主题？</label>
+                  <input id="ex12" name="ex12" type="text" data-slider-min="0" data-slider-max="5" data-slider-step="1"/>
+
+                  <label>这首诗的意境/诗意可以得几分呢？</label>
+                  <input id="ex6" name="ex6" type="text" data-slider-min="0" data-slider-max="5" data-slider-step="1"/>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card mb-lg-4 shadow-sm">
+                <div class="card-body">
+                  <th th:if="${#lists.size(poems)>1}">
+                  <th:block th:object="${poems[1]}">
+                    <li th:each="item : *{lines}" th:text="${item}"></li>
+                  </th:block>
+                  <br/>
+
+                  <label>给这首诗的流利度打个分吧！</label>
+                  <input id="ex1" name="ex1" type="text" data-slider-min="0" data-slider-max="5" data-slider-step="1"/>
+
+                  <label>您觉得这首诗上下句衔接得如何？</label>
+                  <input id="ex4" name="ex4" type="text" data-slider-min="0" data-slider-max="5" data-slider-step="1"/>
+
+                  <label>您觉得这首诗带有感情吗？</label>
+                  <input id="ex10" name="ex10" type="text" data-slider-min="0" data-slider-max="5" data-slider-step="1"/>
+
+                  <label>您觉得这首诗是否隐含了一定的主题？</label>
+                  <input id="ex13" name="ex13" type="text" data-slider-min="0" data-slider-max="5" data-slider-step="1"/>
+
+                  <label>这首诗的意境/诗意可以得几分呢？</label>
+                  <input id="ex7" name="ex7" type="text" data-slider-min="0" data-slider-max="5" data-slider-step="1"/>
+                  </th>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card mb-lg-4 shadow-sm">
+                <div class="card-body">
+                  <th th:if="${#lists.size(poems)>2}">
+                  <th:block th:object="${poems[2]}">
+                    <li th:each="item : *{lines}" th:text="${item}"></li>
+                  </th:block>
+                  <br/>
+                  <label>给这首诗的流利度打个分吧！</label>
+                  <input id="ex2" name="ex2" type="text" data-slider-min="0" data-slider-max="5" data-slider-step="1"/>
+                  <label>您觉得这首诗上下句衔接得如何？</label>
+                  <input id="ex5" name="ex5" type="text" data-slider-min="0" data-slider-max="5" data-slider-step="1"/>
+
+                  <label>您觉得这首诗带有感情吗？</label>
+                  <input id="ex11" name="ex11" type="text" data-slider-min="0" data-slider-max="5" data-slider-step="1"/>
+
+                  <label>您觉得这首诗是否隐含了一定的主题？</label>
+                  <input id="ex14" name="ex14" type="text" data-slider-min="0" data-slider-max="5" data-slider-step="1"/>
+
+                  <label>这首诗的意境/诗意可以得几分呢？</label>
+                  <input id="ex8" name="ex8" type="text" data-slider-min="0" data-slider-max="5" data-slider-step="1"/>
+                  </th>
+                </div>
+              </div>
+            </div>
+            <input id="inputUsername" name="inputUsername" type="hidden" value="">
+            <input id="inputPassword" name="inputPassword" type="hidden" value="">
+            <input id="pageNumber" name="pageNumber" type="hidden" value="">
+            <input id="step" name="step" type="hidden" value="">
+          </div>
+          </form>
+        </div>
+
+        <script th:inline="javascript">
+            $(document).ready(function() {
+                var ex0 = [[${poems[0].fluentScore}]];
+                var ex3 = [[${poems[0].coherenceScore}]];
+                var ex9 = [[${poems[0].emotionScore}]];
+                var ex12 = [[${poems[0].topicScore}]];
+                var ex6 = [[${poems[0].poeticnessScore}]];
+                $("#ex0").slider({
+                    value: ex0,
+                    ticks: [0, 1, 2, 3, 4, 5],
+                    ticks_labels: ['0', '1', '2', '3', '4', '5'],
+                    ticks_snap_bounds: 30
+                });
+                $("#ex3").slider({
+                    value: ex3,
+                    ticks: [0, 1, 2, 3, 4, 5],
+                    ticks_labels: ['0', '1', '2', '3', '4', '5'],
+                    ticks_snap_bounds: 30
+                });
+                $("#ex9").slider({
+                    value: ex9,
+                    ticks: [0, 1, 2, 3, 4, 5],
+                    ticks_labels: ['0', '1', '2', '3', '4', '5'],
+                    ticks_snap_bounds: 30
+                });
+                $("#ex12").slider({
+                    value: ex12,
+                    ticks: [0, 1, 2, 3, 4, 5],
+                    ticks_labels: ['0', '1', '2', '3', '4', '5'],
+                    ticks_snap_bounds: 30
+                });
+                $("#ex6").slider({
+                    value: ex6,
+                    ticks: [0, 1, 2, 3, 4, 5],
+                    ticks_labels: ['0', '1', '2', '3', '4', '5'],
+                    ticks_snap_bounds: 30
+                });
+
+                var pageNumber = [[${pageNumber}]];
+                var ex1 = [[${poems[1].fluentScore}]];
+                var ex2 = [[${poems[2].fluentScore}]];
+                $("#ex1").slider({
+                    value: ex1,
+                    ticks: [0, 1, 2, 3, 4, 5],
+                    ticks_labels: ['0', '1', '2', '3', '4', '5'],
+                    ticks_snap_bounds: 30
+                });
+                $("#ex2").slider({
+                    value: ex2,
+                    ticks: [0, 1, 2, 3, 4, 5],
+                    ticks_labels: ['0', '1', '2', '3', '4', '5'],
+                    ticks_snap_bounds: 30
+                });
+
+                var ex4 = [[${poems[1].coherenceScore}]];
+                var ex5 = [[${poems[2].coherenceScore}]];
+                $("#ex4").slider({
+                    value: ex4,
+                    ticks: [0, 1, 2, 3, 4, 5],
+                    ticks_labels: ['0', '1', '2', '3', '4', '5'],
+                    ticks_snap_bounds: 30
+                });
+                $("#ex5").slider({
+                    value: ex5,
+                    ticks: [0, 1, 2, 3, 4, 5],
+                    ticks_labels: ['0', '1', '2', '3', '4', '5'],
+                    ticks_snap_bounds: 30
+                });
+
+                var ex10 = [[${poems[1].emotionScore}]];
+                var ex11 = [[${poems[2].emotionScore}]];
+                $("#ex10").slider({
+                    value: ex10,
+                    ticks: [0, 1, 2, 3, 4, 5],
+                    ticks_labels: ['0', '1', '2', '3', '4', '5'],
+                    ticks_snap_bounds: 30
+                });
+                $("#ex11").slider({
+                    value: ex11,
+                    ticks: [0, 1, 2, 3, 4, 5],
+                    ticks_labels: ['0', '1', '2', '3', '4', '5'],
+                    ticks_snap_bounds: 30
+                });
+
+                var ex13 = [[${poems[1].topicScore}]];
+                var ex14 = [[${poems[2].topicScore}]];
+                $("#ex13").slider({
+                    value: ex13,
+                    ticks: [0, 1, 2, 3, 4, 5],
+                    ticks_labels: ['0', '1', '2', '3', '4', '5'],
+                    ticks_snap_bounds: 30
+                });
+                $("#ex14").slider({
+                    value: ex14,
+                    ticks: [0, 1, 2, 3, 4, 5],
+                    ticks_labels: ['0', '1', '2', '3', '4', '5'],
+                    ticks_snap_bounds: 30
+                });
+
+                var ex7 = [[${poems[1].poeticnessScore}]];
+                var ex8 = [[${poems[2].poeticnessScore}]];
+                $("#ex7").slider({
+                    value: ex7,
+                    ticks: [0, 1, 2, 3, 4, 5],
+                    ticks_labels: ['0', '1', '2', '3', '4', '5'],
+                    ticks_snap_bounds: 30
+                });
+                $("#ex8").slider({
+                    value: ex8,
+                    ticks: [0, 1, 2, 3, 4, 5],
+                    ticks_labels: ['0', '1', '2', '3', '4', '5'],
+                    ticks_snap_bounds: 30
+                });
+
+                var percentage = Math.round(pageNumber*100/33);
+                document.getElementById("progress-bar").setAttribute('style','width:'+percentage+'%');
+                $('#progress-bar').text(percentage+'%');
+
+                /*var option0 = [[${poems[0].emotionLabel}]];
+                var option1 = [[${poems[1].emotionLabel}]];
+                var option2 = [[${poems[2].emotionLabel}]];
+                if (option0!="option0") {
+                    $('#btn-group0 label[name='+option0+']').addClass('active').find('input').prop('checked', true);
+                }
+                if (option1!="option0") {
+                    $('#btn-group1 label[name='+option1+']').addClass('active').find('input').prop('checked', true);
+                }
+                if (option2!="option0") {
+                    $('#btn-group2 label[name='+option2+']').addClass('active').find('input').prop('checked', true);
+                }
+
+                var topic0 = [[${poems[0].selectedTopicLabel}]];
+                var topic1 = [[${poems[1].selectedTopicLabel}]];
+                var topic2 = [[${poems[2].selectedTopicLabel}]];
+                if (topic0!="topic0") {
+                    $('#btn-group4 label[name='+topic0+']').addClass('active').find('input').prop('checked', true);
+                }
+                if (topic1!="topic0") {
+                    $('#btn-group5 label[name='+topic1+']').addClass('active').find('input').prop('checked', true);
+                }
+                if (topic2!="topic0") {
+                    $('#btn-group6 label[name='+topic2+']').addClass('active').find('input').prop('checked', true);
+                }*/
+            });
+          function changePage(step) {
+              var inputUsername = [[${inputUsername}]];
+              var inputPassword = [[${inputPassword}]];
+              var pageNumber = [[${pageNumber}]];
+              if (pageNumber + step < 0) {
+                  alert("No older pages!");
+              } else if (pageNumber + step <= 33) {
+                  document.getElementById("inputUsername").value=inputUsername;
+                  document.getElementById("inputPassword").value=inputPassword;
+                  document.getElementById("pageNumber").value=pageNumber;
+                  document.getElementById("step").value=step;
+                  document.getElementById("info-form").submit();
+              } else {
+                  var msg = "您真的确定要提交吗？";
+                  if (confirm(msg)==true){
+                      document.getElementById("inputUsername").value=inputUsername;
+                      document.getElementById("inputPassword").value=inputPassword;
+                      document.getElementById("pageNumber").value=pageNumber;
+                      document.getElementById("step").value=step;
+                      document.getElementById("info-form").submit();
+                  }else{
+                      return false;
+                  }
+              }
+          }
+        </script>
+      </div>
+
+    </main>
+
+    <footer class="page-footer font-small blue">
+
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          <li class="page-item"><a class="page-link" href="javascript:changePage(-1)">&larr; Older</a></li>
+          <li class="page-item"><a class="page-link" href="javascript:changePage(1)">Newer &rarr;</a></li>
+        </ul>
+      </nav>
+      <div class="footer-copyright text-center py-3">© 2018 Copyright:
+        <a href="http://ailab.jd.com" target="_blank">ailab.jd.com</a>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/holder.min.js"></script>
+    <script src="js/bootstrap-slider.js"></script>
+    <script>
+
+    </script>
+  
+
+<svg xmlns="http://www.w3.org/2000/svg" width="348" height="225" viewBox="0 0 348 225" preserveAspectRatio="none" style="display: none; visibility: hidden; position: absolute; top: -100%; left: -100%;"><defs><style type="text/css"></style></defs><text x="0" y="17" style="font-weight:bold;font-size:17pt;font-family:Arial, Helvetica, Open Sans, sans-serif">Thumbnail</text></svg></body></html>
