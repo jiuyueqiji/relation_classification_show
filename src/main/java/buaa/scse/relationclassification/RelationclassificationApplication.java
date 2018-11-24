@@ -1,23 +1,28 @@
 package buaa.scse.relationclassification;
 
-import buaa.scse.relationclassification.controller.HelloController;
 import buaa.scse.relationclassification.util.MMSegment;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import java.nio.charset.Charset;
+import java.nio.file.Paths;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.huaban.analysis.jieba.JiebaSegmenter;
+import com.huaban.analysis.jieba.WordDictionary;
+
 @SpringBootApplication
 public class RelationclassificationApplication implements CommandLineRunner {
 
-    @Autowired
-    private HelloController helloController;
-
     public static MMSegment mmSegment = new MMSegment();
+    public static JiebaSegmenter segmenter = new JiebaSegmenter();
 
     @Override
     public void run(String... args) {
-        mmSegment.getDictionary();
+    	WordDictionary wordDictionary = WordDictionary.getInstance();
+		wordDictionary.loadUserDict(Paths.get("D:/Workspaces/Eclipse/dictionary.dict"), Charset.defaultCharset());
+		mmSegment.addDictionary();
         /*try {
             helloController.savePapers("wuli");
             helloController.savePapers("huaxue");

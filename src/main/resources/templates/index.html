@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <!--<link rel="icon" href="https://getbootstrap.com/favicon.ico">-->
 
-    <title>Signin Template for Bootstrap</title>
+    <title>中文科技领域实体搜索系统</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -21,10 +21,16 @@
       <div class="container" style="width: 70%">
           <ul class="nav nav-tabs">
               <li class="nav-item">
-                  <a href="#wuli" class="nav-link active" id="wuli">物理</a>
+                  <a href="#wuli" class="nav-link active" id="wuli">物理实体</a>
               </li>
               <li class="nav-item">
-                  <a href="#huaxue" class="nav-link" id="huaxue">化学</a>
+                  <a href="#huaxue" class="nav-link" id="huaxue">化学实体</a>
+              </li>
+              <li class="nav-item">
+                  <a href="#wulire" class="nav-link" id="wulire">物理实体关系</a>
+              </li>
+              <li class="nav-item">
+                  <a href="#huaxuere" class="nav-link" id="huaxuere">化学实体关系</a>
               </li>
           </ul>
 
@@ -86,6 +92,18 @@
           $(this).tab('show');
           var field = document.getElementById("field");
           field.value = "huaxue";
+      });
+      $('#wulire').click(function (e) {
+          e.preventDefault();
+          $(this).tab('show');
+          var field = document.getElementById("field");
+          field.value = "wulire";
+      });
+      $('#huaxuere').click(function (e) {
+          e.preventDefault();
+          $(this).tab('show');
+          var field = document.getElementById("field");
+          field.value = "huaxuere";
       });
   </script>
   </body>

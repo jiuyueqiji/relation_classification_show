@@ -12,7 +12,7 @@ public class MMSegment {
     private int MAX_LENGTH = 10;
     private static Set<String> dictionary;
 
-    public void getDictionary() {
+    public void addDictionary() {
         FileSystemResourceLoader fileSystemResourceLoader = new FileSystemResourceLoader();
         Resource resource  = fileSystemResourceLoader.getResource("classpath:/static/dictionary.txt");
         dictionary = new HashSet<String>();
@@ -38,6 +38,10 @@ public class MMSegment {
 
     public void addWord(String str) {
         dictionary.add(str);
+    }
+    
+    public Set<String> getDictionary() {
+    	return dictionary;
     }
 
     public List<String> leftMax() {
