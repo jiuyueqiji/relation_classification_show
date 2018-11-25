@@ -36,7 +36,7 @@
 
           <form class="bs-example bs-example-form" role="form" action="search" method="post">
               <div class="input-group">
-                  <input type="text" class="form-control" name="keyword" th:value="${keyword}">
+                  <input type="text" class="form-control" id="keyword" name="keyword" th:value="${keyword}">
                   <span class="input-group-btn">
                       <button class="btn btn-default" type="submit">搜索!</button>
                   </span>
@@ -86,24 +86,28 @@
           $(this).tab('show');
           var field = document.getElementById("field");
           field.value = "wuli";
+          document.getElementById("keyword").value=""
       });
       $('#huaxue').click(function (e) {
           e.preventDefault();
           $(this).tab('show');
           var field = document.getElementById("field");
           field.value = "huaxue";
+          document.getElementById("keyword").value=""
       });
       $('#wulire').click(function (e) {
           e.preventDefault();
           $(this).tab('show');
           var field = document.getElementById("field");
           field.value = "wulire";
+          document.getElementById("keyword").value=""
       });
       $('#huaxuere').click(function (e) {
           e.preventDefault();
           $(this).tab('show');
           var field = document.getElementById("field");
           field.value = "huaxuere";
+          document.getElementById("keyword").value=""
       });
   </script>
   </body>

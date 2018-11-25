@@ -66,6 +66,12 @@ public class HelloController {
                          @RequestParam(value = "keyword", defaultValue = "") String keyword,
                          Model model) {
     	List<Paper> papers = new ArrayList<>();
+    	if (keyword == null || keyword.isEmpty()) {
+    		model.addAttribute("papers", papers);
+            model.addAttribute("field", field);
+            model.addAttribute("keyword", keyword);
+            return "index";
+    	}
     	switch(field) {
     	case "wuli":case "huaxue":
     		papers = paperRepository.findAllByFieldTypeAndContentContains(mapping.get(field), keyword);
